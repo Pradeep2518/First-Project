@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; }
+    .box { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.2); width: 300px; text-align: center; }
+    input { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; }
+    button { width: 100%; padding: 10px; margin-top: 10px; border: none; border-radius: 5px; background: #007bff; color: #fff; font-size: 16px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Login</h2>
+    <input type="text" id="loginUser" placeholder="Enter Username">
+    <input type="password" id="loginPass" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? <a href="index.html">Signup</a></p>
+  </div>
+
+  <script>
+    function login() {
+      let user = document.getElementById("loginUser").value;
+      let pass = document.getElementById("loginPass").value;
+
+      let savedUser = localStorage.getItem("username");
+      let savedPass = localStorage.getItem("password");
+
+      if (user === savedUser && pass === savedPass) {
+        localStorage.setItem("loggedInUser", user);
+        window.location.href = "welcome.html";
+      } else {
+        alert("Invalid username or password!");
+      }
+    }
+  </script>
+</body>
+</html>
